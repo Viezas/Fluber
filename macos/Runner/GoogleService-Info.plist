@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBovPmcKb7Pslc56L-dZdj4AMVJ1vvTw9U</string>
+	<key>GCM_SENDER_ID</key>
+	<string>767416617750</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.efrei2023gr3.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>efreigroupe3</string>
+	<key>STORAGE_BUCKET</key>
+	<string>efreigroupe3.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:767416617750:ios:c1f4d7701b5ded34169e37</string>
+</dict>
+</plist>
