@@ -1,7 +1,10 @@
+import 'package:efrei2023gr3/controller/firestoreHelper.dart';
+import 'package:efrei2023gr3/view/myDashBoard.dart';
 import 'package:efrei2023gr3/view/my_animation.dart';
 import 'package:efrei2023gr3/view/my_background.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'constante.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -63,8 +66,34 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  //variable
   String nom="";
   TextEditingController prenom = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+
+  //méhode
+    popErreur(){
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context){
+            return AlertDialog(
+              title: const Text("Erreur"),
+              content: const Text("adressse ou Mot de passe incorrecte"),
+              actions: [
+                TextButton(
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                    child: const Text("Ok")
+                )
+              ],
+            );
+          }
+      );
+    }
 
 
   @override
@@ -131,6 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 MyAnimation(
                   duree: 4,
                   child: TextField(
+                    controller: email,
                     decoration: InputDecoration(
                         prefixIcon: const Icon(Icons.mail),
                         hintText: "Entrer votre mail",
@@ -146,6 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 MyAnimation(
                   duree: 5,
                   child: TextField(
+                    controller: password,
                     obscureText: true,
                     decoration: InputDecoration(
                         prefixIcon: const Icon(Icons.lock),
@@ -164,15 +195,52 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: ElevatedButton(
                       onPressed: (){
                         print("j'ai appuyé");
-                        Navigator.push(context, MaterialPageRoute(
-                            builder: (context){
-                              return DashBoard(nom: nom,prenom: prenom.text,);
-                            }
-                        ));
+                        FirestoreHelper().RegisterMyUser(nom, prenom.text, email.text, password.text)
+                            .then((value){
+                              setState(() {
+                                Moi = value;
+                              });
+                              Navigator.push(context, MaterialPageRoute(
+                                  builder: (context){
+                                    return DashBoard(nom: nom,prenom: prenom.text,);
+                                  }
+                              ));
+                        })
+                        .catchError((error){
+                          //afficher un pop
+                        });
+
                       },
                       child: Text("Inscription")
                   ),
-                )
+                ),
+                const SizedBox(height: 10),
+
+                MyAnimation(
+                  duree: 7,
+                  child: ElevatedButton(
+                      onPressed: (){
+                        print("j'ai appuyé");
+                        FirestoreHelper().ConnectMyUser(email.text, password.text)
+                            .then((value){
+                          setState(() {
+                            Moi = value;
+                          });
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (context){
+                                return DashBoard(nom: nom,prenom: prenom.text,);
+                              }
+                          ));
+                        })
+                            .catchError((error){
+                          //afficher un pop
+                          popErreur();
+                        });
+
+                      },
+                      child: Text("Connexion")
+                  ),
+                ),
               ],
             ),
           ),
@@ -188,24 +256,5 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-class DashBoard extends StatefulWidget {
-  String nom;
-  String prenom;
-  DashBoard({required this.nom, required this.prenom,super.key});
 
-  @override
-  State<DashBoard> createState() => _DashBoardState();
-}
-
-class _DashBoardState extends State<DashBoard> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Bonjour ${widget.prenom}  ${widget.nom}"),
-      ),
-      body: const Text("coucou"),
-    );
-  }
-}
 
