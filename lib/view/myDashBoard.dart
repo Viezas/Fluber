@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:efrei2023gr3/constante.dart';
 import 'package:efrei2023gr3/controller/firestoreHelper.dart';
 import 'package:efrei2023gr3/view/my_background.dart';
+import 'package:efrei2023gr3/view/my_google_maps.dart';
 import 'package:efrei2023gr3/view/my_liste_personne.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -177,7 +178,7 @@ class _DashBoardState extends State<DashBoard> {
   Widget bodyPage(){
     switch(selectedIndex){
       case 0 : return MyListePersonne();
-      case 1 : return Text("afficher une carte");
+      case 1 : return MyGoogleMaps();
       default: return Text("Impossible");
     }
   }
