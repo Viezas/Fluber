@@ -17,7 +17,9 @@ class _MyGoogleMapsState extends State<MyGoogleMaps> {
   Widget build(BuildContext context) {
     return GoogleMap(
         initialCameraPosition: cameraPosition,
-      onMapCreated: (control){
+      onMapCreated: (control) async {
+          String newStyle = await DefaultAssetBundle.of(context).loadString("lib/newStyle.json");
+          control.setMapStyle(newStyle);
           controller.complete(control);
       },
     );
