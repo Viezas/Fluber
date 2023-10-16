@@ -1,4 +1,5 @@
 import 'package:efrei2023gr3/controller/firestoreHelper.dart';
+import 'package:efrei2023gr3/controller/permissionPhoto.dart';
 import 'package:efrei2023gr3/view/myDashBoard.dart';
 import 'package:efrei2023gr3/view/my_animation.dart';
 import 'package:efrei2023gr3/view/my_background.dart';
@@ -12,6 +13,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  PermissionPhoto().init();
   runApp(const MyApp());
 }
 
