@@ -1,5 +1,10 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:efrei2023gr3/constante.dart';
+import 'package:efrei2023gr3/controller/firestoreHelper.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DashBoard extends StatefulWidget {
@@ -12,14 +17,94 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
+  //variables
+  Uint8List? bytesImgages;
+  String? nameImage;
 
 
   //méthode
-  pickImage(){
-    FilePicker.platform.pickFiles(
+
+  selectImage(){
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context){
+          if(Platform.isIOS){
+            return CupertinoAlertDialog(
+              title: const Text("Souhaitez vous enregistrer cette image"),
+              content: Image.memory(bytesImgages!),
+              actions: [
+                TextButton(
+                    onPressed: (){
+                  Navigator.pop(context);
+                }, child: const Text("Annulation")
+                ),
+                TextButton(
+                    onPressed: (){
+                      //notre entregsitrement dans la base de donnée
+                      FirestoreHelper().stockageFiles(nameImage!, bytesImgages!, "Images", Moi.uid).then((value) {
+                        setState(() {
+                          Moi.avatar = value;
+                        });
+                        Map<String,dynamic> data = {
+                          "AVATAR":Moi.avatar
+                        };
+                        FirestoreHelper().updateUser(Moi.uid, data);
+
+
+                      });
+                  Navigator.pop(context);
+                }, child: const Text("Enregistrement")
+                ),
+              ],
+            );
+          }
+          else
+            {
+              return AlertDialog(
+                title: const Text("Souhaitez vous enregistrer cette image"),
+                content: Image.memory(bytesImgages!),
+                actions: [
+                  TextButton(
+                      onPressed: (){
+                        Navigator.pop(context);
+                      }, child: const Text("Annulation")
+                  ),
+                  TextButton(
+                      onPressed: (){
+                        //notre entregsitrement dans la base de donnée
+                        FirestoreHelper().stockageFiles(nameImage!, bytesImgages!, "Images", Moi.uid).then((value) {
+                          setState(() {
+                            Moi.avatar = value;
+                          });
+                          Map<String,dynamic> data = {
+                            "AVATAR":Moi.avatar
+                          };
+                          FirestoreHelper().updateUser(Moi.uid, data);
+
+
+                        });
+
+                        Navigator.pop(context);
+                      }, child: const Text("Enregistrement")
+                  ),
+                ],
+
+              );
+            }
+        }
+    );
+  }
+  pickImage() async{
+    FilePickerResult? resultat = await FilePicker.platform.pickFiles(
       withData: true,
       type: FileType.image
     );
+    if(resultat != null){
+      bytesImgages = resultat.files.first.bytes;
+      nameImage = resultat.files.first.name;
+      selectImage();
+    }
   }
   @override
   Widget build(BuildContext context) {
