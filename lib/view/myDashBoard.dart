@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:efrei2023gr3/constante.dart';
 import 'package:efrei2023gr3/controller/firestoreHelper.dart';
+import 'package:efrei2023gr3/view/chech_my_maps.dart';
 import 'package:efrei2023gr3/view/my_background.dart';
 import 'package:efrei2023gr3/view/my_google_maps.dart';
 import 'package:efrei2023gr3/view/my_liste_personne.dart';
@@ -178,7 +179,7 @@ class _DashBoardState extends State<DashBoard> {
   Widget bodyPage(){
     switch(selectedIndex){
       case 0 : return MyListePersonne();
-      case 1 : return MyGoogleMaps();
+      case 1 : return CheckMyMaps();
       default: return Text("Impossible");
     }
   }
