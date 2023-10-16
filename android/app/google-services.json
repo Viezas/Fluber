@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "767416617750",
+    "project_id": "efreigroupe3",
+    "storage_bucket": "efreigroupe3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767416617750:android:7dbf1cccf3d53f7a169e37",
+        "android_client_info": {
+          "package_name": "com.example.efrei2023gr3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYUUX311XB-2AKR0ELly9-KZq5jm4cOKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
