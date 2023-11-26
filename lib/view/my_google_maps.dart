@@ -11,7 +11,7 @@ class MyGoogleMaps extends StatefulWidget {
 }
 
 class _MyGoogleMapsState extends State<MyGoogleMaps> {
-  CameraPosition cameraPosition = CameraPosition(target: LatLng(48.862725, 2.287592),zoom: 14);
+  CameraPosition cameraPosition = const CameraPosition(target: LatLng(48.862725, 2.287592),zoom: 14);
   Completer<GoogleMapController> controller = Completer();
   @override
   Widget build(BuildContext context) {
