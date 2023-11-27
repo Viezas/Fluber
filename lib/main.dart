@@ -115,135 +115,137 @@ class _MyHomePageState extends State<MyHomePage> {
           const MyBackground(),
           Padding(
               padding: const EdgeInsets.all(10),
-            child: Column(
-              children: [
-                //image
-                MyAnimation(
-                  duree: 1,
-                    child: Image.network("https://c.wallhere.com/photos/48/64/manga-1351619.jpg!d")),
-                //afficher le nom
-                const SizedBox(height: 10),
-                MyAnimation(
-                  duree: 2,
-                  child: TextField(
-                    onChanged: (text){
-                      setState(() {
-                        nom = text;
-                      });
-                    },
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.person),
-                      hintText: "Entrer votre nom",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20)
-                      )
-                    ),
-
-                  ),
-                ),
-                //afficher le prénom
-                const SizedBox(height: 10),
-                MyAnimation(
-                  duree: 3,
-                  child: TextField(
-                    controller: prenom,
-                    decoration: InputDecoration(
+            child: Flexible(
+              child: Column(
+                children: [
+                  //image
+                  MyAnimation(
+                    duree: 1,
+                      child: Image.network("https://c.wallhere.com/photos/48/64/manga-1351619.jpg!d")),
+                  //afficher le nom
+                  const SizedBox(height: 10),
+                  MyAnimation(
+                    duree: 2,
+                    child: TextField(
+                      onChanged: (text){
+                        setState(() {
+                          nom = text;
+                        });
+                      },
+                      decoration: InputDecoration(
                         prefixIcon: const Icon(Icons.person),
-                        hintText: "Entrer votre prénom",
+                        hintText: "Entrer votre nom",
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)
+                          borderRadius: BorderRadius.circular(20)
                         )
+                      ),
+              
                     ),
-
                   ),
-                ),
-                //afficher le mail
-                const SizedBox(height: 10),
-                MyAnimation(
-                  duree: 4,
-                  child: TextField(
-                    controller: email,
-                    decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.mail),
-                        hintText: "Entrer votre mail",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)
-                        )
+                  //afficher le prénom
+                  const SizedBox(height: 10),
+                  MyAnimation(
+                    duree: 3,
+                    child: TextField(
+                      controller: prenom,
+                      decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.person),
+                          hintText: "Entrer votre prénom",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20)
+                          )
+                      ),
+              
                     ),
-
                   ),
-                ),
-                //afficher le password
-                const SizedBox(height: 10),
-                MyAnimation(
-                  duree: 5,
-                  child: TextField(
-                    controller: password,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.lock),
-                        hintText: "Entrer votre password",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)
-                        )
+                  //afficher le mail
+                  const SizedBox(height: 10),
+                  MyAnimation(
+                    duree: 4,
+                    child: TextField(
+                      controller: email,
+                      decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.mail),
+                          hintText: "Entrer votre mail",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20)
+                          )
+                      ),
+              
                     ),
-
                   ),
-                ),
-                const SizedBox(height: 10),
-                //afficher le bouton inscription
-                MyAnimation(
-                  duree: 6,
-                  child: ElevatedButton(
-                      onPressed: (){
-                        print("j'ai appuyé");
-                        FirestoreHelper().RegisterMyUser(nom, prenom.text, email.text, password.text)
-                            .then((value){
-                              setState(() {
-                                Moi = value;
-                              });
-                              Navigator.push(context, MaterialPageRoute(
-                                  builder: (context){
-                                    return DashBoard(nom: nom,prenom: prenom.text,);
-                                  }
-                              ));
-                        })
-                        .catchError((error){
-                          //afficher un pop
-                        });
-
-                      },
-                      child: Text("Inscription")
+                  //afficher le password
+                  const SizedBox(height: 10),
+                  MyAnimation(
+                    duree: 5,
+                    child: TextField(
+                      controller: password,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.lock),
+                          hintText: "Entrer votre password",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20)
+                          )
+                      ),
+              
+                    ),
                   ),
-                ),
-                const SizedBox(height: 10),
-
-                MyAnimation(
-                  duree: 7,
-                  child: ElevatedButton(
-                      onPressed: (){
-                        print("j'ai appuyé");
-                        FirestoreHelper().ConnectMyUser(email.text, password.text)
-                            .then((value){
-                          setState(() {
-                            Moi = value;
+                  const SizedBox(height: 10),
+                  //afficher le bouton inscription
+                  MyAnimation(
+                    duree: 6,
+                    child: ElevatedButton(
+                        onPressed: (){
+                          print("j'ai appuyé");
+                          FirestoreHelper().RegisterMyUser(nom, prenom.text, email.text, password.text)
+                              .then((value){
+                                setState(() {
+                                  Moi = value;
+                                });
+                                Navigator.push(context, MaterialPageRoute(
+                                    builder: (context){
+                                      return DashBoard(nom: nom,prenom: prenom.text,);
+                                    }
+                                ));
+                          })
+                          .catchError((error){
+                            //afficher un pop
                           });
-                          Navigator.push(context, MaterialPageRoute(
-                              builder: (context){
-                                return DashBoard(nom: nom,prenom: prenom.text,);
-                              }
-                          ));
-                        })
-                            .catchError((error){
-                          //afficher un pop
-                          popErreur();
-                        });
-
-                      },
-                      child: Text("Connexion")
+              
+                        },
+                        child: Text("Inscription")
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 10),
+              
+                  MyAnimation(
+                    duree: 7,
+                    child: ElevatedButton(
+                        onPressed: (){
+                          print("j'ai appuyé");
+                          FirestoreHelper().ConnectMyUser(email.text, password.text)
+                              .then((value){
+                            setState(() {
+                              Moi = value;
+                            });
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context){
+                                  return DashBoard(nom: nom,prenom: prenom.text,);
+                                }
+                            ));
+                          })
+                              .catchError((error){
+                            //afficher un pop
+                            popErreur();
+                          });
+              
+                        },
+                        child: Text("Connexion")
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

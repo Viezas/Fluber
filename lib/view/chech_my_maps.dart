@@ -16,16 +16,26 @@ class _CheckMyMapsState extends State<CheckMyMaps> {
     return FutureBuilder<Position>(
         future: PermissionGps().init(),
         builder: (context,snap){
-          if(snap.hasData){
-            Position position = snap.data!;
-            return MyGoogleMaps();
+          if(snap.connectionState == ConnectionState.waiting){
+            return const Center(
+                child: CircularProgressIndicator.adaptive()
+            );
           }
           else
             {
-              return const Center(
-                child: Text("L'application ne peut accéder à vos données GPS"),
-              );
+              if(snap.hasData){
+                Position position = snap.data!;
+                return  MyGoogleMaps(myPosition: position,);
+              }
+              else {
+                return const Center(
+                    child: Text(
+                        "L'application ne peut accéder à vos données GPS")
+                );
+              }
             }
+
+
         }
     );
   }
