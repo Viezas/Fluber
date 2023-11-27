@@ -44,38 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDAV3Xc3JCrR3X-ewKhkSZKTeGfdUxdR_Q',
-    appId: '1:767416617750:web:72236503956d9be5169e37',
-    messagingSenderId: '767416617750',
-    projectId: 'efreigroupe3',
-    authDomain: 'efreigroupe3.firebaseapp.com',
-    storageBucket: 'efreigroupe3.appspot.com',
-    measurementId: 'G-XYB838FNH6',
+    apiKey: 'AIzaSyDwBGM3szFJArZZT_An_pGggxhkvdzCqtA',
+    appId: '1:28365485652:web:4fd83bed4ecaaad4501fc1',
+    messagingSenderId: '28365485652',
+    projectId: 'flubereat',
+    authDomain: 'flubereat.firebaseapp.com',
+    storageBucket: 'flubereat.appspot.com',
+    measurementId: 'G-TV2XVL2BFG',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCYUUX311XB-2AKR0ELly9-KZq5jm4cOKA',
-    appId: '1:767416617750:android:7dbf1cccf3d53f7a169e37',
-    messagingSenderId: '767416617750',
-    projectId: 'efreigroupe3',
-    storageBucket: 'efreigroupe3.appspot.com',
+    apiKey: 'AIzaSyAoLnZFUHSCzMx6xe3TdSDb4xntb3XoTXw',
+    appId: '1:28365485652:android:486f72663cf38d37501fc1',
+    messagingSenderId: '28365485652',
+    projectId: 'flubereat',
+    storageBucket: 'flubereat.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBovPmcKb7Pslc56L-dZdj4AMVJ1vvTw9U',
-    appId: '1:767416617750:ios:b4aba7413377ec91169e37',
-    messagingSenderId: '767416617750',
-    projectId: 'efreigroupe3',
-    storageBucket: 'efreigroupe3.appspot.com',
+    apiKey: 'AIzaSyBQygKpR7xoyAROowf3UPi1WFGGeMlCyKc',
+    appId: '1:28365485652:ios:0cdc2cfba0061294501fc1',
+    messagingSenderId: '28365485652',
+    projectId: 'flubereat',
+    storageBucket: 'flubereat.appspot.com',
     iosBundleId: 'com.example.efrei2023gr3',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBovPmcKb7Pslc56L-dZdj4AMVJ1vvTw9U',
-    appId: '1:767416617750:ios:c1f4d7701b5ded34169e37',
-    messagingSenderId: '767416617750',
-    projectId: 'efreigroupe3',
-    storageBucket: 'efreigroupe3.appspot.com',
+    apiKey: 'AIzaSyBQygKpR7xoyAROowf3UPi1WFGGeMlCyKc',
+    appId: '1:28365485652:ios:892e34e4c5fa120f501fc1',
+    messagingSenderId: '28365485652',
+    projectId: 'flubereat',
+    storageBucket: 'flubereat.appspot.com',
     iosBundleId: 'com.example.efrei2023gr3.RunnerTests',
   );
 }

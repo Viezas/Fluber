@@ -1,6 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:efrei2023gr3/constante.dart';
+import 'package:efrei2023gr3/controller/firestoreHelper.dart';
 
 class MyUser {
   //attributs
@@ -16,6 +17,9 @@ class MyUser {
     return prenom + " " + nom;
   }
 
+  bool isFavoris(String uid) {
+    return favoris?.contains(uid) ?? false;
+  }
 
   //constructeurs
   MyUser(){
@@ -33,7 +37,21 @@ class MyUser {
       email = map["EMAIL"];
       avatar = map["AVATAR"] ?? imageDefault;
       favoris = map["FAVORIS"] ?? [];
-
   }
 
+  toggleFavoris(String uid) {
+    bool hasFavoris = favoris!.contains(uid);
+
+    if(hasFavoris) {
+      favoris?.remove(uid);
+    } else {
+      favoris?.add(uid);
+    }
+
+    Map<String,dynamic> data = {
+      "FAVORIS":Moi.favoris
+    };
+
+    FirestoreHelper().updateUser(Moi.uid, data);
+  }
 }

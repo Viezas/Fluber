@@ -55,8 +55,6 @@ class _DashBoardState extends State<DashBoard> {
                           "AVATAR":Moi.avatar
                         };
                         FirestoreHelper().updateUser(Moi.uid, data);
-
-
                       });
                   Navigator.pop(context);
                 }, child: const Text("Enregistrement")

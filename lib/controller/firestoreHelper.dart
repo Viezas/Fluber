@@ -23,8 +23,6 @@ class FirestoreHelper {
     };
     addUser(uid,map);
     return getUser(uid);
-
-
   }
 
   //récuperer les infos de l'utilisateur

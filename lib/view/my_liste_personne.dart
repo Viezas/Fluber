@@ -3,6 +3,7 @@ import 'package:efrei2023gr3/constante.dart';
 import 'package:efrei2023gr3/controller/firestoreHelper.dart';
 import 'package:efrei2023gr3/model/my_user.dart';
 import 'package:flutter/material.dart';
+import 'package:favorite_button/favorite_button.dart';
 
 class MyListePersonne extends StatefulWidget {
   const MyListePersonne({super.key});
@@ -49,7 +50,12 @@ class _MyListePersonneState extends State<MyListePersonne> {
                              ),
                              title: Text(otherUser.fullName),
                              subtitle: Text(otherUser.email),
-                             trailing: Icon(Icons.favorite_outline_outlined),
+                             trailing: FavoriteButton(
+                               isFavorite: Moi.isFavoris(otherUser.uid),
+                               valueChanged: (_isFavorite) {
+                                 Moi.toggleFavoris(otherUser.uid);
+                               },
+                             ),
                            ),
                          );
                        }

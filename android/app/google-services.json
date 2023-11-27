@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "767416617750",
-    "project_id": "efreigroupe3",
-    "storage_bucket": "efreigroupe3.appspot.com"
+    "project_number": "28365485652",
+    "project_id": "flubereat",
+    "storage_bucket": "flubereat.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:767416617750:android:7dbf1cccf3d53f7a169e37",
+        "mobilesdk_app_id": "1:28365485652:android:486f72663cf38d37501fc1",
         "android_client_info": {
           "package_name": "com.example.efrei2023gr3"
         }
@@ -15,7 +15,26 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCYUUX311XB-2AKR0ELly9-KZq5jm4cOKA"
+          "current_key": "AIzaSyAoLnZFUHSCzMx6xe3TdSDb4xntb3XoTXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28365485652:android:74cdea93658d65f6501fc1",
+        "android_client_info": {
+          "package_name": "com.example.test_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoLnZFUHSCzMx6xe3TdSDb4xntb3XoTXw"
         }
       ],
       "services": {
