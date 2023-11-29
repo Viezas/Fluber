@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'chat_bubble.dart';
+
 class ChatPage extends StatefulWidget{
   final String receiverUserEmail;
   final String receiverUserId;
@@ -45,6 +47,8 @@ class _ChatPageState extends State<ChatPage>{
 
           // user input
           _buildMessageInput(),
+
+          const SizedBox(height: 25),
         ],
       ),
     );
@@ -83,11 +87,23 @@ class _ChatPageState extends State<ChatPage>{
 
     return Container(
       alignment: alignment,
-      child: Column(
-        children: [
-          Text(data['senderEmail']),
-          Text(data['message']),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment:
+            (data['senderId'] == _firebaseAuth.currentUser!.uid)
+            ? CrossAxisAlignment.end
+            : CrossAxisAlignment.start,
+          mainAxisAlignment:
+          (data['senderId'] == _firebaseAuth.currentUser!.uid)
+              ? MainAxisAlignment.end
+              : MainAxisAlignment.start,
+          children:[
+            Text(data['senderEmail']),
+            const SizedBox(height: 5),
+            ChatBubble(message: data['message']),
+          ],
+        ),
       ),
     );
   }
@@ -100,8 +116,13 @@ class _ChatPageState extends State<ChatPage>{
         Expanded(
           child: TextField(
             controller: _messageController,
-            //hintText: "Saisissez votre message",
             obscureText: false,
+            decoration: InputDecoration(
+              hintText: "Saisissez votre message...",
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color:Colors.grey.shade200),
+              ),
+            ),
           ),
         ),
 
