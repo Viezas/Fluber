@@ -42,7 +42,11 @@ class FirestoreHelper {
     UserCredential credential = await auth.signInWithEmailAndPassword(email: email, password: password);
     String uid = credential.user!.uid;
     return getUser(uid);
+  }
 
+  //User log out
+  Future<void>signOutMyUser() async{
+    return await auth.signOut();
   }
 
   //suppression d'un utilisateur

@@ -44,38 +44,37 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDwBGM3szFJArZZT_An_pGggxhkvdzCqtA',
-    appId: '1:28365485652:web:4fd83bed4ecaaad4501fc1',
-    messagingSenderId: '28365485652',
-    projectId: 'flubereat',
-    authDomain: 'flubereat.firebaseapp.com',
-    storageBucket: 'flubereat.appspot.com',
-    measurementId: 'G-TV2XVL2BFG',
+    apiKey: 'AIzaSyDHBX1wxKg7fnOhgC47i1rTMiAZcE1yVcU',
+    appId: '1:762497920890:web:45d0d3f98e758e7efb30c3',
+    messagingSenderId: '762497920890',
+    projectId: 'ubereatscopy-8b305',
+    authDomain: 'ubereatscopy-8b305.firebaseapp.com',
+    storageBucket: 'ubereatscopy-8b305.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAoLnZFUHSCzMx6xe3TdSDb4xntb3XoTXw',
-    appId: '1:28365485652:android:486f72663cf38d37501fc1',
-    messagingSenderId: '28365485652',
-    projectId: 'flubereat',
-    storageBucket: 'flubereat.appspot.com',
+    apiKey: 'AIzaSyC_7Sl6IqLQJPLcg2CRRy4B7wRDYq4MeuE',
+    appId: '1:762497920890:android:c9b4badab1d0a1a3fb30c3',
+    messagingSenderId: '762497920890',
+    projectId: 'ubereatscopy-8b305',
+    storageBucket: 'ubereatscopy-8b305.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBQygKpR7xoyAROowf3UPi1WFGGeMlCyKc',
-    appId: '1:28365485652:ios:0cdc2cfba0061294501fc1',
-    messagingSenderId: '28365485652',
-    projectId: 'flubereat',
-    storageBucket: 'flubereat.appspot.com',
+    apiKey: 'AIzaSyCHhuuVQd6ZJWBmMrrbhNKv9tMHflpXFOc',
+    appId: '1:762497920890:ios:8a1183cb1921026efb30c3',
+    messagingSenderId: '762497920890',
+    projectId: 'ubereatscopy-8b305',
+    storageBucket: 'ubereatscopy-8b305.appspot.com',
     iosBundleId: 'com.example.efrei2023gr3',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBQygKpR7xoyAROowf3UPi1WFGGeMlCyKc',
-    appId: '1:28365485652:ios:892e34e4c5fa120f501fc1',
-    messagingSenderId: '28365485652',
-    projectId: 'flubereat',
-    storageBucket: 'flubereat.appspot.com',
+    apiKey: 'AIzaSyCHhuuVQd6ZJWBmMrrbhNKv9tMHflpXFOc',
+    appId: '1:762497920890:ios:0703eaa88ff5ac24fb30c3',
+    messagingSenderId: '762497920890',
+    projectId: 'ubereatscopy-8b305',
+    storageBucket: 'ubereatscopy-8b305.appspot.com',
     iosBundleId: 'com.example.efrei2023gr3.RunnerTests',
   );
 }

@@ -109,6 +109,10 @@ class _DashBoardState extends State<DashBoard> {
       selectImage();
     }
   }
+  void signOut(){
+    FirestoreHelper().signOutMyUser();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,6 +141,10 @@ class _DashBoardState extends State<DashBoard> {
             ListTile(
               leading: const Icon(Icons.mail),
               title: Text(Moi.email),
+            ),
+            ListTile(
+              leading: const Icon(Icons.mail),
+              title: Text(Moi.email),
             )
           ],
         ),
@@ -144,6 +152,12 @@ class _DashBoardState extends State<DashBoard> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(
+              onPressed: signOut,
+              icon: const Icon(Icons.logout),
+          )
+        ],
       ),
       extendBodyBehindAppBar: true,
       body: Stack(
