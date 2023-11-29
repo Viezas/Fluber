@@ -3,7 +3,8 @@ import 'package:efrei2023gr3/constante.dart';
 import 'package:efrei2023gr3/controller/firestoreHelper.dart';
 import 'package:efrei2023gr3/model/my_user.dart';
 import 'package:flutter/material.dart';
-import 'package:favorite_button/favorite_button.dart';
+
+import 'chat_page.dart';
 
 class MyListePersonne extends StatefulWidget {
   const MyListePersonne({super.key});
@@ -22,48 +23,54 @@ class _MyListePersonneState extends State<MyListePersonne> {
             return const CircularProgressIndicator.adaptive();
           }
           else
-            {
-              if(snap.hasData == null){
-                return const Text("Aucune donnée");
-              }
-              else
-                {
-                  List documents = snap.data!.docs;
-                  return ListView.builder(
-                    itemCount: documents.length,
-                      itemBuilder: (context,index){
-                       MyUser otherUser = MyUser.database(documents[index]);
-                       if(Moi.uid == otherUser.uid){
-                         return Container();
-                       }
-                       else {
-                         return Card(
-                           elevation: 5,
-                           color: Colors.amber,
-                           shape: RoundedRectangleBorder(
-                               borderRadius: BorderRadius.circular(15)),
-                           child: ListTile(
-                             leading: CircleAvatar(
-                               radius: 70,
-                               backgroundImage: NetworkImage(otherUser.avatar ??
-                                   imageDefault),
-                             ),
-                             title: Text(otherUser.fullName),
-                             subtitle: Text(otherUser.email),
-                             trailing: FavoriteButton(
-                               isFavorite: Moi.isFavoris(otherUser.uid),
-                               valueChanged: (_isFavorite) {
-                                 Moi.toggleFavoris(otherUser.uid);
-                               },
-                             ),
-                           ),
-                         );
-                       }
-                      }
-                  );
-                }
-
+          {
+            if(snap.hasData == null){
+              return const Text("Aucune donnée");
             }
+            else
+            {
+              List documents = snap.data!.docs;
+              return ListView.builder(
+                  itemCount: documents.length,
+                  itemBuilder: (context,index){
+                    MyUser otherUser = MyUser.database(documents[index]);
+                    if(Moi.uid == otherUser.uid){
+                      return Container();
+                    }
+                    else {
+                      return Card(
+                        elevation: 5,
+                        color: Colors.amber,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            radius: 70,
+                            backgroundImage: NetworkImage(otherUser.avatar ??
+                                imageDefault),
+                          ),
+                          title: Text(otherUser.fullName),
+                          subtitle: Text(otherUser.email),
+                          trailing: Icon(Icons.favorite_outline_outlined),
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ChatPage(
+                                  receiverUserEmail: otherUser.email,
+                                  receiverUserId: otherUser.uid,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    }
+                  }
+              );
+            }
+
+          }
         }
     );
   }
